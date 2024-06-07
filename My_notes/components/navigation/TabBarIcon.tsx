@@ -3,6 +3,9 @@
 import Ionicons from '@expo/vector-icons/Ionicons';
 import { type IconProps } from '@expo/vector-icons/build/createIconSet';
 import { type ComponentProps } from 'react';
+import { AntDesign } from '@expo/vector-icons';
+//<AntDesign name="setting" size={24} color="black" />//settings icon
+//<AntDesign name="infocirlceo" size={24} color="black" />//info icon
 
 export function TabBarIcon({ style, ...rest }: IconProps<ComponentProps<typeof Ionicons>['name']>) {
   return <Ionicons size={28} style={[{ marginBottom: -3 }, style]} {...rest} />;
