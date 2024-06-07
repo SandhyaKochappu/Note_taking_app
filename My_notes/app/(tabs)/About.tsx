@@ -1,6 +1,6 @@
 
 import { View, Text, ScrollView, StyleSheet, FlatList } from 'react-native';
-
+import NavBarBackground ;
 
 export interface ILicense {
   licenses: string;
