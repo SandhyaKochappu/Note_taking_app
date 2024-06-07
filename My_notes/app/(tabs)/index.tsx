@@ -15,7 +15,7 @@ import { ThemedView } from '@/components/ThemedView';
 
 export default function HomeScreen() {
   const colorScheme = useColorScheme();
-  
+
   return (
     // <ParallaxScrollView
     //   headerBackgroundColor={{ light: '#A1CEDC', dark: '#1D3D47' }}
@@ -64,11 +64,31 @@ export default function HomeScreen() {
       // <Stack.Screen name="About" component={AboutScreen} options={{ headerShown: false }} />
       // <Stack.Screen name="Settings" component={SettingsScreen} options={{ headerShown: false }} />
     // Login: LoginScreen,
-    // SignUp: SignUpScreen,
-    <Stack />
-    
+    // SignUp: SignUpScreen,   
     // About: AboutScreen,
     // Settings: SettingsScreen,
+<Stack
+      screenOptions={{
+        headerStyle: {
+          backgroundColor: '#f4511e',
+        },
+        headerTintColor: '#fff',
+        headerTitleStyle: {
+          fontWeight: 'bold',
+        },
+      }}>
+      {/* Optionally configure static options outside the route.*/}
+      <Stack.Screen 
+        name="AppHomeScreen" 
+          options={{ 
+            title: 'Home',
+            headerShown: false }} />
+      
+    </Stack>
+
+
+
+
 );
 }
 
