@@ -1,4 +1,7 @@
 const db = require("./db");//import the middleware created in db.js
+const knex = require("knex")(db); 
+// for Morgan logging
+const fs = require("fs");
 var createError = require('http-errors');
 var express = require('express');
 var path = require('path');
@@ -20,9 +23,16 @@ app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
+// for morgan logging
+const logStream = fs.createWriteStream(path.join(__dirname, "access.txt"), {
+  flags: "a",
+});
+
+app.use(logger("common", { stream: logStream }));
+
 //makes the database connection available to the application
 app.use((req, res, next) => {
-  req.db = db;
+  req.db = knex;
   next();
 });
 app.use('/', indexRouter);
@@ -30,7 +40,7 @@ app.use('/users', usersRouter);
 
 //create a route to check the MySQL version installed on your system:for checking db connection
 app.use("/version", (req, res) =>
-  req.db.query("SELECT VERSION()").then(([rows]) => res.send(rows))
+  req.db.raw("SELECT VERSION()").then((version) => res.send(version[0][0]))
 );
 
 // catch 404 and forward to error handler
