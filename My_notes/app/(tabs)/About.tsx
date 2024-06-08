@@ -51,6 +51,8 @@ export default function About()  {
       <ThemedView style={styles.titleContainer}>
         <ThemedText type="title">About This App</ThemedText>
       </ThemedView>
+      <ThemedText>This is a note taking app built with React Native, Expo, node.js, and Express.
+      You can create, update and delete notes using this app.</ThemedText>
       <ThemedText>This app is built using the following open-source libraries:</ThemedText>
       <View style={{flex: 1}}>
       <FlatList
