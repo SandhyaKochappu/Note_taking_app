@@ -38,7 +38,7 @@ export default function RootLayout() {
           fontWeight: 'bold',
         },
       }}>
-        {/* <Stack.Screen name="LoginScreen" options={{}}/> */}
+        <Stack.Screen name="LoginScreen" options={{}}/>
         <Stack.Screen name="(tabs)" options={{ headerShown: false }} />
         <Stack.Screen name="+not-found" />
       </Stack>
