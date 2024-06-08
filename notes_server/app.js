@@ -1,3 +1,4 @@
+const db = require("./db");//import the middleware created in db.js
 var createError = require('http-errors');
 var express = require('express');
 var path = require('path');
@@ -19,8 +20,18 @@ app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
+//makes the database connection available to the application
+app.use((req, res, next) => {
+  req.db = db;
+  next();
+});
 app.use('/', indexRouter);
 app.use('/users', usersRouter);
+
+//create a route to check the MySQL version installed on your system:for checking db connection
+app.use("/version", (req, res) =>
+  req.db.query("SELECT VERSION()").then(([rows]) => res.send(rows))
+);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
