@@ -50,12 +50,13 @@ app.use((req, res, next) => {
   req.db = knex;
   next();
 });
-app.use('/', indexRouter);
-app.use('/users', usersRouter);
-
 app.use(bodyParser.json());
 app.use('/api', notesRoutes);
 app.use('/api/auth', authRoutes);
+app.use('/', indexRouter);
+app.use('/users', usersRouter);
+
+
 
 const PORT = process.env.PORT || 3000;
 app.listen(PORT, '192.168.1.112', () => {
