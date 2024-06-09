@@ -15,6 +15,16 @@ export default function TabLayout() {
         tabBarActiveTintColor: Colors[colorScheme ?? 'light'].tint,
         headerShown: false,
       }}>
+
+      <Tabs.Screen
+        name="LoginScreen"
+        options={{
+          title: 'Login',
+          tabBarIcon: ({ color, focused }) => (
+            <TabBarIcon name={focused ? 'enter' : 'enter-outline'} color={color} />
+          ),
+        }}
+      />
       <Tabs.Screen
         name="index"
         options={{
