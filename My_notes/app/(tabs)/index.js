@@ -2,13 +2,14 @@
 import { Stack } from 'expo-router';
 import { Colors } from '@/constants/Colors';
 import { useColorScheme } from '@/hooks/useColorScheme';
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState, useContext  } from 'react';
 import { View, Text, FlatList, Button, StyleSheet, ActivityIndicator, TextInput, Alert } from 'react-native';
-import axios from 'axios';
+
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import { ThemedText } from '@/components/ThemedText';
 import { ThemedView } from '@/components/ThemedView';
 import { useAuth } from '../../context/authContext';
+import FontSizeContext from '../../context/fontsize';
 import ParallaxScrollView from '@/components/ParallaxScrollView';
 import Ionicons from '@expo/vector-icons/Ionicons';
 
@@ -16,6 +17,7 @@ const url = "http://192.168.1.112:3000/api";
 
 export default function HomeScreen() {
   const colorScheme = useColorScheme();
+  const { fontSize } = useContext(FontSizeContext);
 
   const { token, logout } = useAuth(); //authentication details passed down as prop 
   const [notes, setNotes] = useState([]);
@@ -312,3 +314,7 @@ const styles = StyleSheet.create({
     gap: 8,
   },
 });
+
+
+  
+  
