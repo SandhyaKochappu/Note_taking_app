@@ -1,8 +1,12 @@
-import { View, Text, TextInput, StyleSheet, FlatList } from 'react-native';
+import { View, Text, TextInput, StyleSheet, FlatList, ScrollView } from 'react-native';
 import ParallaxScrollView from '@/components/ParallaxScrollView';
 import { ThemedText } from '@/components/ThemedText';
 import { ThemedView } from '@/components/ThemedView';
 import Ionicons from '@expo/vector-icons/Ionicons';
+
+import React, { useState, useEffect, useContext } from 'react';
+import FontSizeContext from '../../context/fontsize';
+
 
 export interface ILicense {
   licenses: string;
@@ -17,7 +21,9 @@ interface IFinalLicense {
   licenseSpecs: ILicense;
 }
 
-export default function About()  {
+export default function AboutScreen()  {
+
+  const { fontSize } = useContext(FontSizeContext); // fontsize from settings
   
     // LET'S GET THE LICENSES AND DEFINE OUR REGEXES
     const licenses: { [id: string]: ILicense } = require('./licenses.json');
