@@ -1,9 +1,7 @@
 const express = require('express');
 const bcrypt = require('bcryptjs');
 const jwt = require('jsonwebtoken');
-const db = require('../db/knex');
 const knex = require('knex')(require('../knexfile').development);
-const { v4: uuidv4 } = require('uuid');
 const cors = require('cors');
 const app = express();
 
