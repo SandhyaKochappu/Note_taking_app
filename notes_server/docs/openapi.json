@@ -13,10 +13,10 @@
     }
   },
   "paths": {
-    "/api/city": {
+    "/api/login": {
       "get": {
-        "summary": "List cities and provinces",
-        "description": "Full listing of cities and their provinces for the database",
+        "summary": "User login",
+        "description": "For the user to enter their login and password",
         "responses": {
           "200": {
             "description": "successful operation",
@@ -51,19 +51,19 @@
         }
       }
     },
-    "/api/city/{CountryCode}": {
-      "get": {
-        "summary": "List cities for given country.",
-        "description": "Listing of all information for each city for the selected country",
+    "/api/register": {
+      "post": {
+        "summary": "User registration",
+        "description": "For first time user registration",
         "parameters": [
           {
-            "name": "CountryCode",
+            "name": "register info",
             "in": "path",
-            "description": "Three letter Country Code used to filter queries.",
+            "description": "username and password.",
             "required": true,
             "schema": {
               "type": "string",
-              "example": "NZL"
+              "example": "root"
             }
           }
         ],
@@ -101,5 +101,111 @@
         }
       }
     }
+  
+,
+
+"/api/notes": {
+      "get": {
+        "summary": "Retrieve notes",
+        "description": "Retrieve existing notes from the database",
+        "parameters": [
+          {
+            "name": "notes details",
+            "in": "path",
+            "description": "title content.",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "example": "root"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "successful operation",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "error": {
+                      "type": "string",
+                      "enum": ["true", "false"]
+                    },
+                    "cities": {
+                      "type": "array",
+                      "items": {
+                        "type": "object",
+                        "properties": {
+                          "name": {
+                            "type": "string"
+                          },
+                          "district": {
+                            "type": "string"
+                          }
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+
+"/api/notes/:id": {
+      "get": {
+        "summary": "Retrieve a particular note",
+        "description": "Retrieve existing notes from the database",
+        "parameters": [
+          {
+            "name": "notes details",
+            "in": "path",
+            "description": "title content.",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "example": "root"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "successful operation",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "error": {
+                      "type": "string",
+                      "enum": ["true", "false"]
+                    },
+                    "cities": {
+                      "type": "array",
+                      "items": {
+                        "type": "object",
+                        "properties": {
+                          "name": {
+                            "type": "string"
+                          },
+                          "district": {
+                            "type": "string"
+                          }
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+
+
   }
 }
